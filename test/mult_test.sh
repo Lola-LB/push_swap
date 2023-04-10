@@ -4,7 +4,7 @@ then
 	echo -e "Must provide arguments for length of stack to test and number of tests to run"
 	exit 1
 fi
-DIR="/Users/lolalebreton/Documents/42/push-swap"
+DIR=$(pwd)
 MIN=10000000
 MAX=0
 CHECK='OK'
