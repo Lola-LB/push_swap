@@ -21,3 +21,5 @@ You can test the push_swap program using the following command:
 ```
 $ ./test/mult_test.sh stack_len nb_of_tests
 ```
+## NB
+This project is part of the School 42 curriculum. It has to be written entirely in C and comply with several "norme" rules, including for the code writing.
