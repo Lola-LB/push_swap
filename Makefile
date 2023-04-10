@@ -31,10 +31,11 @@ SRCS		= operations.c		\
 			  get.c				\
 			  cost.c			\
 			  quick_sort.c		\
+			  main.c			\
 
-OBJS_LIBFT	= $(addprefix libft/, $(SRCS_LIBFT:.c=.o))
+OBJS_LIBFT	= $(addprefix srcs/libft/, $(SRCS_LIBFT:.c=.o))
 
-OBJS_PRINTF	= $(addprefix printf/, $(SRCS_PRINTF:.c=.o))
+OBJS_PRINTF	= $(addprefix srcs/printf/, $(SRCS_PRINTF:.c=.o))
 
 OBJS		= $(addprefix srcs/, $(SRCS:.c=.o))
 
@@ -42,38 +43,34 @@ HEADER		= -I include/
 
 CC			= cc
 
-CFLAGS		= -g3 -Wall -Wextra -Werror
+CFLAGS		= -Wall -Wextra -Werror
 
 RM			= rm -f
 
-MAIN		= main.c
-
-LIBFT		= libft.a
-
-LIB			= lib.a
-
 NAME		= push_swap
 
-AR			= ar rcs
-
 %.o: %.c
-	$(CC) $(CFLAGS) $(HEADER) -c $< -o $@
+	@$(CC) $(CFLAGS) $(HEADER) -c $< -o $@
 
-$(NAME):	$(LIB) $(MAIN)
-	$(CC) $(HEADER) $(CFLAGS) $(LIB) $(MAIN) -o $(NAME)
-
-$(LIB):		$(OBJS) $(OBJS_LIBFT) $(OBJS_PRINTF)
-	$(AR) $@ $^
+$(NAME):	$(OBJS) $(OBJS_LIBFT) $(OBJS_PRINTF)
+	@echo "Compiling..."
+	@echo "Linking..."
+	@$(CC) $(HEADER) $(CFLAGS) $(OBJS) $(OBJS_LIBFT) $(OBJS_PRINTF) -o $(NAME)
+	@echo "Done!"
 
 all:		$(NAME)
 
 bonus:		all
 
 clean:
-	$(RM) $(OBJS) $(OBJS_LIBFT) $(OBJS_PRINTF)
+	@echo "Removing objs..."
+	@$(RM) $(OBJS) $(OBJS_LIBFT) $(OBJS_PRINTF)
+	@echo "clean done!"
 
 fclean:		clean
-	$(RM) $(NAME) $(LIB) $(LIBFT)
+	@echo "Removing bin..."
+	@$(RM) $(NAME)
+	@echo "fclean done!"
 
 re:		fclean all
 

@@ -7,4 +7,4 @@ fi
 DIR=$(pwd)
 ARG=$($DIR/test/./randnum.sh $1) ; ARG="${ARG//$'\n'/ }"
 $DIR/./push_swap $(echo $ARG) | wc -l
-$DIR/./push_swap $(echo $ARG) | $DIR/./checker_Mac $ARG
+$DIR/./push_swap $(echo $ARG) | $DIR/./checker $ARG
